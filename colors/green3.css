@@ -1,0 +1,24 @@
+body {
+    background-color: rgba(76,191,173,1);
+}
+
+circle {
+    fill: rgba(29,183,141,1);
+    stroke: rgba(78,93,89,1);
+}
+
+rect {
+    fill: rgba(141,207,173,1);
+    stroke: rgba(227,242,231,1);
+}
+
+polygon {
+    /*'boldest' colors from circle and rect*/
+    fill: rgba(29,183,141,1);
+    stroke: rgba(141,207,173,1);
+}
+
+path {
+    fill: rgba(78,93,89,1);
+    stroke: rgba(227,255,231,1);
+}

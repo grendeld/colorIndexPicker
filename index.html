@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Color Index</title>
+    <link id="header" rel="stylesheet" type="text/css" href="colors/1main.css" />
+    <link id="theme" rel="stylesheet" type="text/css" href="colors/orange1.css" />
+    <link rel="icon" href="images/favicon.ico"/>
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <form id="form1">
+        <div id="headDiv">
+
+            <input type="button" id="violet1" value="" style="width: 40px;" />
+            <input type="button" id="orange1" value="" style="width: 40px;" />
+            <input type="button" id="yellow1" value="" style="width: 40px;" />
+            <input type="button" id="green1" value="" style="width: 40px;" />
+            <input type="button" id="red1" value="" style="width: 40px;" />
+            <input type="button" id="blue1" value="" style="width: 40px;" />
+            <input type="button" id="mixed1" value="" style="width:40px;" />
+            <br />
+            <input type="button" id="violet2" value="" style="width:40px;" />
+            <input type="button" id="orange2" value="" style="width:40px;" />
+            <input type="button" id="yellow2" value="" style="width:40px;" />
+            <input type="button" id="green2" value="" style="width:40px;" />
+            <input type="button" id="red2" value="" style="width:40px;" />
+            <input type="button" id="blue2" value="" style="width:40px;" />
+            <input type="button" id="mixed2" value="" style="width:40px;" />
+            <br />
+            <input type="button" id="violet3" value="" style="width:40px;" />
+            <input type="button" id="orange3" value="" style="width:40px;" />
+            <input type="button" id="yellow3" value="" style="width:40px;" />
+            <input type="button" id="green3" value="" style="width:40px;" />
+            <input type="button" id="red3" value="" style="width:40px;" />
+            <input type="button" id="blue3" value="" style="width:40px;" />
+            <input type="button" id="mixed3" value="" style="width:40px;" />
+            <br />
+            <input type="button" id="violet4" value="" style="width:40px;" />
+            <input type="button" id="orange4" value="" style="width:40px;" />
+            <input type="button" id="yellow4" value="" style="width:40px;" />
+            <input type="button" id="green4" value="" style="width:40px;" />
+            <input type="button" id="red4" value="" style="width:40px;" />
+            <input type="button" id="blue4" value="" style="width:40px;" />
+            <input type="button" id="mixed4" value="" style="width:40px;" />
+        </div>
+        <div>
+            <svg width="200" height="200" style="padding: 50px;">
+                <circle cx="130" cy="130" r="65" stroke="" stroke-width="10" fill="" />
+                <rect x="114" y="114" height="35" width="35" stroke="" stroke-width="10" fill="" />
+            </svg>
+            <svg width="190" height="190" style="padding: 50px;">
+                <rect height="190" width="190" stroke="" stroke-width="10" fill="" />
+                <circle cx="95" cy="95" r="35" stroke="" stroke-width="10" fill="" />
+            </svg>
+            <svg width="300" height="200" style="padding: 50px;">
+                <polygon points="100,10 40,198 190,78 10,78 160,198" stroke="" stroke-width="10" fill="" />
+            </svg>
+            <svg height="220" width="220" style="padding-bottom:35px; padding-right:100px;">
+                <path d="M100 110
+                         L 10 60
+                         A 100 100, 0, 1, 1, 10 160
+                         Z"
+                    stroke-width="10">
+                </path>
+            </svg>
+        </div>
+        <div>
+
+            <br>
+            <div style="margin-left:2.9cm;">
+            Specs:
+          </div>
+            <br>
+            <table id="tableColorSpecs" style="margin-left:2.5cm;" >
+              <tr>
+                <td>Background </td>
+                <td><input type="text" ID="tbtest1" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                <td></td>
+                <td></td>
+              </tr>
+                <tr>
+                  <td>Circle Fill </td>
+                  <td><input type="text" ID="tbtest2" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                  <td>Circle Stroke </td>
+                  <td><input type="text" ID="tbtest3" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                </tr>
+                <tr>
+                  <td>Square Fill </td>
+                  <td><input type="text" ID="tbtest4" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                  <td>Square Stroke </td>
+                  <td><input type="text" ID="tbtest5" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                </tr>
+                <tr>
+                  <td>Star Fill </td>
+                  <td><input type="text" ID="tbtest6" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                  <td>Star Stroke </td>
+                  <td><input type="text" ID="tbtest7" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                </tr>
+                <tr>
+                  <td>Pac-man Fill </td>
+                  <td><input type="text" ID="tbtest8" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                  <td>Pac-man Stroke </td>
+                  <td><input type="text" ID="tbtest9" ReadOnly="true" style="width:200px; height:25px;"></input></td>
+                </tr>
+              </table>
+              <input type="text" ID="tbRGBAColors" ReadOnly="true" style="width:80%; height:40px;"></input>
+        </div>
+    </form>
+    <script>
+        $(document).ready(function () {
+
+            if (localStorage.theme)
+                $('link#theme').attr('href', localStorage.theme);
+
+            $(':button').attr('onclick', 'changeTheme(this)');
+
+        });
+        function changeTheme(ref) {
+            $('link#theme').attr('href', "colors/" + ref.id.toString() + ".css");
+            $('#tbRGBAColors').val(changeTB(ref.id));
+            fillBoxes();
+            localStorage.theme = "colors/" + ref.id.toString() + ".css";
+        }
+
+        function fillBoxes (clrs){
+        var splits = $('#tbRGBAColors').val().split(';');
+        $('#tbtest1').val(splits[0]);
+        $('#tbtest2').val(splits[1]);
+        $('#tbtest3').val(splits[2]);
+        $('#tbtest4').val(splits[3]);
+        $('#tbtest5').val(splits[4]);
+        $('#tbtest6').val(splits[1]);
+        $('#tbtest7').val(splits[3]);
+        $('#tbtest8').val(splits[2]);
+        $('#tbtest9').val(splits[4]);
+      }
+
+
+        function changeTB(text) {
+            switch (text) {
+                case "orange1":
+                    return ' rgba(169, 169, 169, 1); rgba(247, 147, 29, 1); rgba(0, 0, 0, 1); rgba(205, 130, 42, 1); rgba(111, 111, 111, 1);';
+                    break;
+                case "violet1":
+                    return ' rgba(149,143,164,1); rgba(202,98,119,1); rgba(80,73,113,1); rgba(243,123,125,1); rgba(192,182,207,1);';
+                    break
+                case "yellow1":
+                    return ' rgba(186,131,13,1); rgba(129,80,23,1); rgba(212,186,4,1); rgba(209,160,13,1); rgba(240,202,140,1);';
+                    break;
+                case "green1":
+                    return ' rgba(53,145,131,1);  rgba(157,220,249,1); rgba(244,243,138,1); rgba(171,214,155,1); rgba(29,183,141,1);';
+                    break;
+                case "red1":
+                    return ' rgba(242,124,150,1); rgba(244,122,99,1); rgba(236,0,140,1); rgba(149,15,67,1);  rgba(237,20,90,1);';
+                    break;
+                case "blue1":
+                    return ' rgba(80,116,147,1); rgba(167,193,192,1); rgba(123,151,163,1); rgba(114,161,180,1); rgba(77,83,118,1);';
+                    break;
+                case "mixed1":
+                    return ' rgba(0,175,173,1);  rgba(200,33,93,1); rgba(255,205,146,1); rgba(247,147,29,1); rgba(189,174,50,1);';
+                    break;
+                case "violet2":
+                    return ' rgba(148,115,160,1); rgba(225,184,203,1); rgba(201,168,196,1); rgba(192,182,207,1); rgba(193,140,157,1);';
+                    break;
+                case "orange2":
+                    return ' rgba(248,158,93,1); rgba(206,139,79,1); rgba(251,177,97,1); rgba(241,90,64,1); rgba(246,140,89,1);';
+                    break;
+                case "yellow2":
+                    return ' rgba(228,160,37,1); rgba(254,194,51,1); rgba(209,160,13,1);  rgba(255,232,94,1); rgba(255,212,0,1);';
+                    break;
+                case "green2":
+                    return ' rgba(189,200,178,1); rgba(201,201,146,1); rgba(104,135,102,1); rgba(108,153,91,1); rgba(100,106,70,1);';
+                    break;
+                case "red2":
+                    return ' rgba(245,143,146,1); rgba(243,113,108,1); rgba(162,45,63,1); rgba(237,26,58,1); rgba(239,65,86,1);';
+                    break;
+                case "blue2":
+                    return ' rgba(0,136,178,1); rgba(169,169,169,1); rgba(0,173,239,1); rgba(89,89,89,1); rgba(0,0,0,1);';
+                    break;
+                case "mixed2":
+                    return ' rgba(179,33,121,1); rgba(230,177,34,1); rgba(239,35,36,1); rgba(42,159,188,1); rgba(244,121,50,1);';
+                    break;
+                case "violet3":
+                    return ' rgba(97,51,93,1); rgba(61,56,122,1); rgba(237,26,58,1); rgba(140,55,84,1); rgba(80,73,113,1;';
+                    break;
+                case "orange3":
+                    return ' rgba(241,90,34,1); rgba(244,121,50,1); rgba(254,194,51,1); rgba(247,147,29,1); rgba(255,232,94,1);';
+                    break;
+                case "yellow3":
+                    return  'rgba(240,202,140,1); rgba(253,209,175,1); rgba(251,177,97,1); rgba(230,177,34,1); rgba(255,215,105,1);';
+                    break;
+                case "green3":
+                    return ' rgba(76,191,173,1); rgba(29,183,141,1); rgba(78,93,89,1); rgba(141,207,173,1); rgba(227,242,231,1);';
+                    break;
+                case "red3":
+                    return ' rgba(166,164,189,1); rgba(167,9,37,1); rgba(244,133,141,1); rgba(208,119,166,1); rgba(247,160,139,1);';
+                    break;
+                case "blue3":
+                    return ' rgba(189,169,125,1); rgba(0,158,219,1); rgba(110,98,70,1); rgba(62,133,198,1); rgba(148,132,98,1);';
+                    break;
+                case "mixed3":
+                    return ' rgba(254,196,101,1); rgba(243,123,125,1); rgba(62,133,198,1); rgba(153,212,191,1); rgba(175,171,213,1);';
+                    break;
+                case "violet4":
+                    return ' rgba(80,73,113,1); rgba(218,111,171,1); rgba(241,90,34,1); rgba(231,159,198,1); rgba(246,139,51,1);';
+                    break;
+                case "orange4":
+                    return 'rgba(254,219,180,1); rgba(254,196,101,1); rgba(109,192,103,1); rgba(251,177,97,1); rgba(244,121,50,1);';
+                    break;
+                case "yellow4":
+                    return ' rgba(211,211,211,1); rgba(255,230,0,1); rgba(0,0,0,1); rgba(89,89,89,1); rgba(255,235,149,1);';
+                    break;
+                case "green4":
+                    return ' rgba(121,154,40,1); rgba(69,129,43,1); rgba(242,124,150,1); rgba(247,161,161,0.8); rgba(184,191,96,1);';
+                    break;
+                default:
+                    return "";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

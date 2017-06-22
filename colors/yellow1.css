@@ -1,0 +1,25 @@
+﻿body {
+    background-color: rgba(186,131,13,1);
+}
+
+circle {
+    fill: rgba(129,80,23,1);
+    stroke: rgba(212,186,4,1);
+}
+
+rect {
+    fill: rgba(209,160,13,1);
+    stroke: rgba(240,202,140,1);
+}
+
+polygon {
+    /*'boldest' colors from circle and rect*/
+    fill: rgba(129,80,23,1);
+    stroke: rgba(209,160,13,1);
+}
+
+path {
+    /*Pacman mouth - same as background*/
+    fill: rgba(212,186,4,1);
+    stroke: rgba(240,202,140,1);
+}
